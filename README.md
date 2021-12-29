@@ -13,12 +13,15 @@ El contenido de este documento esta basado en el curso "Curso completo de bases 
 
 # Tabla de contenido
 - [Comandos](#Comandos)
-  - [Crear tabla](#Crear-tabla)
-  - [Crear tabla con PRIMARY KEY](#Crear-tabla-con-PRIMARY-KEY)
-  - [Crear tablas con FOREIGN KEY](#Crear-tablas-con-FOREIGN-KEY)
-  - [Insertar registros en una tabla](#Insertar-registros-en-una-tabla)
-  - [Eliminar todos los registros de una tabla](#Eliminar-todos-los-registros-de-una-tabla)
-  - [Eliminar algunos registros de una tabla](#Eliminar-algunos-registros-de-una-tabla)
+  - [CREATE](#CREATE)
+    - [Crear tabla](#Crear-tabla)
+    - [Crear tabla con PRIMARY KEY](#Crear-tabla-con-PRIMARY-KEY)
+    - [Crear tablas con FOREIGN KEY](#Crear-tablas-con-FOREIGN-KEY)
+  - [Registros](#Registros)  
+    - [Insertar registros en una tabla](#Insertar-registros-en-una-tabla)
+    - [Eliminar todos los registros de una tabla](#Eliminar-todos-los-registros-de-una-tabla)
+    - [Eliminar algunos registros de una tabla](#Eliminar-algunos-registros-de-una-tabla)
+  - [Eliminar tablas DROP TABLE](#Eliminar-tablas-DROP-TABLE)
   - [Modificar tabla ALTER TABLE](#Modificar-tabla-ALTER-TABLE)
     - [Renombrar tabla](#Renombrar-tabla)
     - [Añadir columna](#Añadir-columna)
@@ -41,6 +44,8 @@ El contenido de este documento esta basado en el curso "Curso completo de bases 
 
 
 
+
+
 # Comandos
 Existen dos tipos de comandos SQL:
 
@@ -57,7 +62,8 @@ Existen dos tipos de comandos SQL:
 - **UPDATE** Utilizado para modificar los valores de los campos y registros especificados
 - **DELETE** Utilizado para eliminar registros de una tabla de una base de datos
 
-## Crear tabla
+## CREATE
+### Crear tabla
 ```sql
 CREATE TABLE empleados(
 	numempleado INT,
@@ -69,7 +75,7 @@ CREATE TABLE empleados(
 	puesto VARCHAR(45)
 );
 ```
-## Crear tabla con PRIMARY KEY
+### Crear tabla con PRIMARY KEY
 ```sql
 CREATE TABLE libros(
   codigolibro INTEGER ,
@@ -83,7 +89,7 @@ CREATE TABLE libros(
 );
 ```
 
-## Crear tablas con FOREIGN KEY
+### Crear tablas con FOREIGN KEY
 **Tabla 'clientes':**
 ```sql
 CREATE TABLE clientes(
@@ -114,8 +120,8 @@ CREATE TABLE pedidos(
 )
 ```
 
-
-## Insertar registros en una tabla
+## Registros
+### Insertar registros en una tabla
 ```sql
 INSERT INTO empleados(numempleado,nombre,apellidopaterno,apellidomaterno,fechanacimiento,sueldo,puesto)
 VALUES(1,'Juan Jose','Lopez','Sanchez','1992-07-28',4250.8,'Contador'),
@@ -123,13 +129,13 @@ VALUES(1,'Juan Jose','Lopez','Sanchez','1992-07-28',4250.8,'Contador'),
 (3,'Daniel','Garza','Lopez','1991-02-18',6000,'Gerente');
 );
 ```
-## Eliminar todos los registros de una tabla
+### Eliminar todos los registros de una tabla
 ```sql
 DELETE
 FROM alumnos
 ```
 
-## Eliminar algunos registros de una tabla
+### Eliminar algunos registros de una tabla
 Tambien se puede eliminar solo algunos registros, se tiene que usar clausulas.
 ```sql
 DELETE
@@ -142,17 +148,8 @@ DELETE
 FROM alumnos
 WHERE nombre = 'Juan' AND apellidopaterno = 'Vazquez' AND apellidomaterno = 'Perez'
 ```
-## Eliminar tablas
-Ejemplo 1 : Eliminar las tablas "clientes" y "alumnos"
-```sql
-DROP TABLE clientes, alumnos
-```
-Ejemplo 2 : Eliminar una tabla si es que existe.
-```sql
-DROP TABLE IF EXISTS tabla1
-```
 
-## Modificar registro de una tabla
+### Modificar registro de una tabla
 **Ejemplo 1** : Si es que tengo la siguiente tabla :
 <br>
 <div align="center"> 
@@ -184,6 +181,16 @@ UPDATE clientes
 SET ciudad = 'Guadalajara' , estado = 'Jalisco'
 WHERE idcliente = 1000
 ```
+## Eliminar tablas DROP TABLE
+Ejemplo 1 : Eliminar las tablas "clientes" y "alumnos"
+```sql
+DROP TABLE clientes, alumnos
+```
+Ejemplo 2 : Eliminar una tabla si es que existe.
+```sql
+DROP TABLE IF EXISTS tabla1
+```
+
 ## Modificar tabla ALTER TABLE
 
 ### Renombrar tabla
@@ -395,7 +402,6 @@ Tambien se puede ordenar usando ORDER BY
 SELECT DISTINCT totaldeuda
 FROM clientes
 ORDER BY totaldeuda DESC
-
 ```
 <br>
 <div align="center"> 
@@ -403,3 +409,9 @@ ORDER BY totaldeuda DESC
 </div>
 <br>
 
+# BONUS
+## Obtener la fecha actual
+
+```sql
+SELECT current_date
+```
