@@ -41,6 +41,11 @@ El contenido de este documento esta basado en el curso "Curso completo de bases 
   - [Operadores logicos AND, ORD y NOT](#Operadores-logicos-AND,-ORD-y-NOT)
 - [Consultas con predicado](#Consultas-con-predicado)
   - [DISTINCT](#DISTINCT)
+ [BONUS](#BONUS)
+  - [Obtener la fecha actual](#Obtener-la-fecha-actual)
+  - [Importar CSV a postgresql](#Importar-CSV-a-postgresql)
+  - [Importar CSV a postgresql](#Importar-CSV-a-postgresql)
+
 
 
 
@@ -414,4 +419,18 @@ ORDER BY totaldeuda DESC
 
 ```sql
 SELECT current_date
+```
+
+## Importar CSV a postgresql
+
+```sql
+COPY empleados FROM 'D:/UNI/Postgresql/Codigos de tablas/employees.csv' HEADER CSV DELIMITER ',' ;
+```
+
+## Crear tabla a partir de otra tabla
+
+```sql
+CREATE TABLE puestos
+AS SELECT DISTINCT puesto
+FROM empleados
 ```
