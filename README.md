@@ -21,6 +21,7 @@ El contenido de este documento esta basado en el curso "Curso completo de bases 
     - [Insertar registros en una tabla](#Insertar-registros-en-una-tabla)
     - [Eliminar todos los registros de una tabla](#Eliminar-todos-los-registros-de-una-tabla)
     - [Eliminar algunos registros de una tabla](#Eliminar-algunos-registros-de-una-tabla)
+    - [Modificar registro de una tabla](#Modificar-registro-de-una-tabla)
   - [Eliminar tablas DROP TABLE](#Eliminar-tablas-DROP-TABLE)
   - [Modificar tabla ALTER TABLE](#Modificar-tabla-ALTER-TABLE)
     - [Renombrar tabla](#Renombrar-tabla)
