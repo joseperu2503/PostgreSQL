@@ -22,6 +22,9 @@ El contenido de este documento esta basado en el curso "Curso completo de bases 
     - [Eliminar todos los registros de una tabla](#Eliminar-todos-los-registros-de-una-tabla)
     - [Eliminar algunos registros de una tabla](#Eliminar-algunos-registros-de-una-tabla)
     - [Modificar registro de una tabla](#Modificar-registro-de-una-tabla)
+    - [Insertar registros usando valores de otra tabla](#Insertar-registros-usando-valores-de-otra-tabla)
+    - [Modificar registros usando valores de otra tabla](#Modificar-registros-usando-valores-de-otra-tabla)
+    - [Eliminar registros consultando otra tabla](#Eliminar-registros-consultando-otra-tabla)
   - [Eliminar tablas DROP TABLE](#Eliminar-tablas-DROP-TABLE)
   - [Modificar tabla ALTER TABLE](#Modificar-tabla-ALTER-TABLE)
     - [Renombrar tabla](#Renombrar-tabla)
@@ -187,6 +190,36 @@ UPDATE clientes
 SET ciudad = 'Guadalajara' , estado = 'Jalisco'
 WHERE idcliente = 1000
 ```
+### Insertar registros usando valores de otra tabla
+**Ejemplo 1**
+```sql
+INSERT INTO libros(codigolibro,titulo,autor,codigoeditorial,precio,cantidad)
+SELECT 10040, 'La perdida del baston', 'Dionicio Castillo', codigo_editorial, 250.9, 6
+FROM editorial
+WHERE nombreeditorial = 'Mexico';
+```
+**Ejemplo 2**
+```sql
+INSERT INTO alumnossobresalientes(numcontrol, nombre, apellidopaterno, apellidomaterno, fechaingreso, carrera, promedio)
+SELECT numcontrol, nombre, apellidopaterno, apellidomaterno, fechaingreso, carrera, promedio
+FROM alumnos
+WHERE promedio >= 90;
+```
+### Modificar registros usando valores de otra tabla
+```sql
+UPDATE vendedor
+SET municipio = sucursales.municipio
+FROM sucursales
+WHERE vendedor.num_sucursal = sucursales.numsucursal
+```
+### Eliminar registros consultando otra tabla
+```sql
+DELETE 
+FROM libros
+USING editorial
+WHERE libros.codigoeditorial = editorial.codigo_editorial AND nombreeditorial = 'Mexico'
+```
+
 ## Eliminar tablas DROP TABLE
 Ejemplo 1 : Eliminar las tablas "clientes" y "alumnos"
 ```sql
